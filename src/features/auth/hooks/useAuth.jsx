@@ -30,7 +30,7 @@ const useAuth = () => {
     formState: { errors, isSubmitting },
   } = useForm({ mode: "onBlur" });
 
-  const onRegisterSubmit = async (data) => {
+  const onRegisterSubmit = async (data) => { //isko data handleSubmit deta hai
     console.log(data);
   };
 

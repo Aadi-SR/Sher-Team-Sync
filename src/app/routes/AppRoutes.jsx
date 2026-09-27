@@ -14,9 +14,7 @@ import PublicRoute from "../protectedRoutes/PublicRoute";
 const AppRoutes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    (async () => {
-      await dispatch(loggedInEmployee());
-    })();
+    dispatch(loggedInEmployee());
   }, []);
 
   let router = createBrowserRouter([
@@ -24,7 +22,7 @@ const AppRoutes = () => {
       path: "/",
       element: <PublicRoute />,
       children: [
-        {
+        { 
           path: "",
           element: <AuthLayout />,
           children: [
