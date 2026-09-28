@@ -5,11 +5,13 @@ import AuthLayout from "../layouts/AuthLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Login from "../../features/auth/ui/Login";
 import Register from "../../features/auth/ui/Register";
-import Home from "../../features/dashboard/ui/pages/Home";
 import { loggedInEmployee } from "../../features/auth/api/authAction";
 import { useDispatch } from "react-redux";
 import ProtectedRoute from "../protectedRoutes/ProtectedRoute";
 import PublicRoute from "../protectedRoutes/PublicRoute";
+import { commonRoutes } from "./CommonRoutes";
+import { adminRoutes } from "./AdminRoutes";
+import { employeeRoutes } from "./EmployeeRoutes";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -45,12 +47,7 @@ const AppRoutes = () => {
         {
           path: "",
           element : <DashboardLayout />,
-          children : [
-            {
-              path:"",
-              element : <Home />
-            },
-          ]
+          children : [...commonRoutes, ],
         }
       ]
     }
