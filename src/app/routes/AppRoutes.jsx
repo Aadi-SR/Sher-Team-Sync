@@ -12,6 +12,7 @@ import PublicRoute from "../protectedRoutes/PublicRoute";
 import { commonRoutes } from "./CommonRoutes";
 import { adminRoutes } from "./AdminRoutes";
 import { employeeRoutes } from "./EmployeeRoutes";
+import RoleBasedRoute from "../protectedRoutes/RoleBasedRoute";
 
 const AppRoutes = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,21 @@ const AppRoutes = () => {
         {
           path: "",
           element : <DashboardLayout />,
-          children : [...commonRoutes, ],
+          children : [
+            ...commonRoutes,
+            {
+              element : <RoleBasedRoute allowedRole={['admin']} />,
+              children:[
+                ...adminRoutes,
+              ]
+            },
+            {
+              element : <RoleBasedRoute allowedRole={['employee']} />,
+              children:[
+                ...employeeRoutes,
+              ]
+            }
+           ],
         }
       ]
     }
